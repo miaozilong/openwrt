@@ -1,0 +1,43 @@
+name: build openwrt
+run-name: build openwrt
+on: [ push ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+      - name: 安装依赖
+        run: sudo apt install build-essential clang flex g++ gawk gcc-multilib gettext git libncurses5-dev libssl-dev python3-distutils rsync unzip zlib1g-dev file wget
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - run: cd ${{ github.workspace }}
+      - name: 新增执行权限
+        run: sudo chmod 777 -R *
+      - run: ./scripts/feeds update -a
+      - run: ./scripts/feeds install -a
+      - run: make -j $(($(nproc)+1)) || make -j1 || make -j1 V=s
+      - name: Zip the Build
+        run: zip -r openwrt.zip ./bin
+      # 需要在项目里设置权限
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.date.outputs.date }}
+          release_name: ${{ steps.date.outputs.date }}
+          body: 编译测试的 请不要下载
+          draft: false
+          prerelease: false
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: openwrt.zip
+          asset_name: openwrt.zip
+          asset_content_type: application/zip

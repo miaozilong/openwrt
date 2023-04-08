@@ -3,7 +3,6 @@ run-name: build openwrt
 on: [ push ]
 jobs:
   build:
-    needs: install-dependency
     runs-on: ubuntu-latest
     steps:
       - name: Get current date
@@ -43,8 +42,3 @@ jobs:
           asset_path: openwrt.zip
           asset_name: openwrt.zip
           asset_content_type: application/zip
-  install-dependency:
-    runs-on: ubuntu-latest
-    steps:
-      - name: 安装依赖
-        run: sudo apt install build-essential clang flex g++ gawk gcc-multilib gettext git libncurses5-dev libssl-dev python3-distutils rsync unzip zlib1g-dev file wget

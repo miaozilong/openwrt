@@ -21,7 +21,7 @@ jobs:
       # - run: make menuconfig
       - run: make -j $(($(nproc)+1)) || make -j1 || make -j1 V=s
       - name: Zip the Build
-        run: zip -r openwrt.zip ./bin
+        run: zip -r openwrt.zip ./bin/.[!.]* ./bin/*
       # 需要在项目里设置权限
       - name: Create Release
         id: create_release

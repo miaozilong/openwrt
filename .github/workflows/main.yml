@@ -17,7 +17,7 @@ jobs:
         run: sudo chmod 777 -R *
       - run: ./scripts/feeds update -a
       - run: ./scripts/feeds install -a
-      - run: make defconfig
+      # - run: make defconfig
       - run: make -j $(($(nproc)+1)) || make -j1 || make -j1 V=s
       - name: Zip the Build
         run: zip -r openwrt.zip ./bin

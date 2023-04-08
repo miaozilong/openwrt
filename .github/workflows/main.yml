@@ -18,7 +18,7 @@ jobs:
       - run: ./scripts/feeds update -a
       - run: ./scripts/feeds install -a
       # - run: make defconfig
-      - run: make menuconfig
+      # - run: make menuconfig
       - run: make -j $(($(nproc)+1)) || make -j1 || make -j1 V=s
       - name: Zip the Build
         run: zip -r openwrt.zip ./bin

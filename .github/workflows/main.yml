@@ -28,7 +28,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{steps.datetime.outputs.now}}
-          release_name: 修改默认IP
+          release_name: ${{steps.datetime.outputs.now}}
           body: 编译测试的 请不要下载
           draft: false
           prerelease: false

@@ -5,6 +5,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: install dependency
+        run: sudo apt install -y qemu-img
       - name: Get current date
         id: datetime
         run: echo "now=$(date +'%Y%m%d-%H%M%S')" >> $GITHUB_OUTPUT

@@ -25,8 +25,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{steps.datetime.outputs.now}}
-          release_name: ${{steps.datetime.outputs.now}}
+          tag_name: ${{step.datetime.outputs.now}}
+          release_name: ${{step.datetime.outputs.now}}
           body: 编译测试的 请不要下载
           draft: false
           prerelease: false

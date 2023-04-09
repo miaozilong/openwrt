@@ -4,7 +4,6 @@
 /env
 /dl
 /.toolchain_build_ver
-/bin
 /.idea
 /build_dir
 /staging_dir

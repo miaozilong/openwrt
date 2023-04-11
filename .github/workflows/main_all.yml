@@ -19,7 +19,7 @@ jobs:
         id: datetime
         run: echo "now=$(date +'%Y%m%d-%H%M%S')" >> $GITHUB_OUTPUT
       - name: 安装musl-libc
-      - run: |
+        run: |
           git clone https://git.musl-libc.org/git/musl
           cd musl
           ls

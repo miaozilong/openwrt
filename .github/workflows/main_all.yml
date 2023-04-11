@@ -3,7 +3,7 @@ run-name: 编译所有
 on: [ push ]
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: install dependency
         run: sudo apt -y install libssh-dev musl musl-dev musl-tools

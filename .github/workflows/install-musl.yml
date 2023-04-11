@@ -8,8 +8,11 @@ jobs:
       - name: install dependency
         run: sudo apt -y install libssh-dev musl musl-dev musl-tools
       - run: musl-gcc -v
+      - run: pwd
       - run: git clone https://github.com/richfelker/musl-cross-make.git
-      - run: cd musl-cross-make
+      - run: pwd
+      - run: ls
+      - run: cd ./musl-cross-make
       - run: pwd
       - run: ls
       - run: make TARGET=x86_64-linux-musl

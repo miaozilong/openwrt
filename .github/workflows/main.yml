@@ -30,9 +30,9 @@ jobs:
       - run: cat .config
       - run: rm -rf package/feeds/luci/luci-app-apinger
       #      - run: make -j $(($(nproc)+1)) || make -j1 || make -j1 V=s
-      - run: make tools/install
-      - run: make toolchain/install
-      - run: make package/luci-app-passwall/compile V=99
+      - run: make tools/install -j $(($(nproc)+1)) || make -j1 || make -j1 V=s
+      - run: make toolchain/install -j $(($(nproc)+1)) || make -j1 || make -j1 V=s
+      - run: make package/luci-app-passwall/compile -j $(($(nproc)+1)) || make -j1 || make -j1 V=s
       - name: Zip the Build
         run: zip -r openwrt.zip ./bin/.[!.]* ./bin/*
       # 需要在项目里设置权限

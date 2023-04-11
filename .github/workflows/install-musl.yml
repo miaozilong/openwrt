@@ -10,5 +10,7 @@ jobs:
       - run: musl-gcc -v
       - run: git clone https://github.com/richfelker/musl-cross-make.git
       - run: cd musl-cross-make
+      - run: pwd
+      - run: ls
       - run: make TARGET=x86_64-linux-musl
       - run: musl-gcc -v

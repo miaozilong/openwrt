@@ -30,12 +30,12 @@ jobs:
       - run: cat .config
       - run: rm -rf package/feeds/luci/luci-app-apinger
       #      - run: make -j $(($(nproc)+1)) || make -j1 || make -j1 V=s
-      - run: make buildinfo
-      - run: make diffconfig buildversion feedsversion
+      - run: make buildinfo -j1 V=s
+      - run: make diffconfig buildversion feedsversion -j1 V=s
       - run: make target/compile -j1 V=s
       - run: make package/kernel/button-hotplug/compile -j1 V=s
-      - run: make package/compile -j$(nproc)
-      - run: make package/index
+      - run: make package/compile -j1 V=s
+      - run: make package/index -j1 V=s
       - name: Zip the Build
         run: zip -r openwrt.zip ./bin/.[!.]* ./bin/*
       # 需要在项目里设置权限

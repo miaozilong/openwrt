@@ -32,8 +32,6 @@ jobs:
       #      - run: make -j $(($(nproc)+1)) || make -j1 || make -j1 V=s
       - run: make buildinfo -j1 V=s
       - run: make diffconfig buildversion feedsversion -j1 V=s
-      - run: mkdir build_dir/target-x86_64_musl/linux-x86_64/linux-5.10.176 -p
-      - run: ls build_dir/target-x86_64_musl/linux-x86_64/linux-5.10.176
       - run: make target/compile -j1 V=s
       - run: make package/kernel/button-hotplug/compile -j1 V=s
       - run: make package/compile -j1 V=s

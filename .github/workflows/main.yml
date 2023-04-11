@@ -28,7 +28,7 @@ jobs:
       - run: ./scripts/feeds install -a
       - run: make defconfig
       - run: cat .config
-      - run: rm -rf openwrt/package/feeds/luci/luci-app-apinger
+      - run: rm -rf package/feeds/luci/luci-app-apinger
       #      - run: make -j $(($(nproc)+1)) || make -j1 || make -j1 V=s
       - run: make package/luci-app-passwall/compile V=99
       - name: Zip the Build

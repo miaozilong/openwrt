@@ -15,3 +15,4 @@ jobs:
       - run: ls
       - run: make TARGET=x86_64-linux-musl
       - run: musl-gcc -v
+

@@ -32,11 +32,7 @@ jobs:
       #      - run: make -j $(($(nproc)+1)) || make -j1 || make -j1 V=s
       - run: make buildinfo -j $(($(nproc)+1)) V=s
       - run: make diffconfig buildversion feedsversion -j $(($(nproc)+1)) V=s
-      - run: |
-          cd build_dir/target-i386_pentium4_musl/linux-x86_generic/linux-5.10.176
-          sudo apt-get install flex bison -y
-          make
-          make install
+      - run: sudo apt-get install flex bison -y
       - run: make target/compile -j1 V=s
       - run: make package/kernel/button-hotplug/compile -j1 V=s
       - run: make package/compile -j1 V=s

@@ -22,17 +22,15 @@ jobs:
         run: |
           git clone https://git.musl-libc.org/git/musl
           cd musl
-          ls
           ./configure
           make
           sudo make install
-#      - name: 安装musl-cross-make
-#        run: |
-#          git clone https://github.com/richfelker/musl-cross-make.git
-#          cd musl-cross-make
-#          ls
-#          make TARGET=x86_64-linux-musl
-#          sudo make install
+      - name: 安装musl-cross-make
+        run: |
+          git clone https://github.com/richfelker/musl-cross-make.git
+          cd musl-cross-make
+          make TARGET=x86_64-linux-musl
+          sudo make install
       - name: Check out repository code
         uses: actions/checkout@v3
       - run: cd ${{ github.workspace }}

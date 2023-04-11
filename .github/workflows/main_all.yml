@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: install dependency
-        run: sudo apt -y install libssh-dev
+        run: sudo apt -y install libssh-dev musl-tools
       #      - name: install dependency
       #        run: >
       #          sudo apt install -y ack antlr3 aria2 asciidoc autoconf automake autopoint binutils bison build-essential

@@ -5,13 +5,11 @@ jobs:
   build:
     runs-on: ubuntu-22.04
     steps:
-      - name: install dependency
-        run: sudo apt -y install libssh-dev musl musl-dev musl-tools
-      - run: musl-gcc -v
       - run: pwd
       - run: git clone https://github.com/richfelker/musl-cross-make.git
       - run: pwd
       - run: ls
+      - run: sleep 3
       - run: cd ./musl-cross-make
       - run: pwd
       - run: ls

@@ -34,6 +34,7 @@ jobs:
       - run: make diffconfig buildversion feedsversion -j1 V=s
       - run: mkdir build_dir/target-x86_64_musl/linux-x86_64/linux-5.10.176 -p
       - run: mv x86_64-openwrt-linux-musl-gcc build_dir/target-x86_64_musl/linux-x86_64/linux-5.10.176
+      - run: ls build_dir/target-x86_64_musl/linux-x86_64/linux-5.10.176
       - run: make target/compile -j1 V=s
       - run: make package/kernel/button-hotplug/compile -j1 V=s
       - run: make package/compile -j1 V=s

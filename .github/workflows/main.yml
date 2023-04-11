@@ -1,5 +1,5 @@
-name: build openwrt
-run-name: build openwrt
+name: 编译passwall
+run-name: 编译passwall
 on: [ push ]
 jobs:
   build:

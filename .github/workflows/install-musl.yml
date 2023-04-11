@@ -1,0 +1,15 @@
+name: 安装musl
+run-name: 安装musl
+on: [ push ]
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - run: musl-gcc -v
+      - name: install dependency
+        run: sudo apt -y install libssh-dev musl musl-dev musl-tools
+      - run: musl-gcc -v
+      - run: git clone https://github.com/richfelker/musl-cross-make.git
+      - run: cd musl-cross-make
+      - run: make TARGET=x86_64-linux-musl
+      - run: musl-gcc -v

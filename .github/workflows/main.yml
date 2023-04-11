@@ -24,6 +24,7 @@ jobs:
       - name: 新增执行权限
         run: sudo chmod 777 -R *
       - run: ./scripts/feeds update -a
+      - run: ./scripts/feeds install libpam liblzma libnetsnmp
       - run: ./scripts/feeds install -a
       - run: make defconfig
       - run: cat .config

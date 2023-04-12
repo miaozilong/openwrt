@@ -30,7 +30,7 @@ jobs:
       - run: cat .config
       - run: rm -rf package/feeds/luci/luci-app-apinger
       - run: make download -j16
-      - run: make -j1 V=s
+      - run: make -j$(nproc) V=s
       #      - run: make buildinfo -j $(($(nproc)+1))
       #      - run: make diffconfig buildversion feedsversion -j $(($(nproc)+1))
       #      - run: sudo apt-get install flex bison -y

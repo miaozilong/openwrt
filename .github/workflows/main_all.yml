@@ -29,7 +29,7 @@ jobs:
       - run: make defconfig
       - run: cat .config
       - run: rm -rf package/feeds/luci/luci-app-apinger
-      - run: make download -j16
+#      - run: make download -j16
       - run: make -j$(nproc) V=s
       #      - run: make buildinfo -j $(($(nproc)+1))
       #      - run: make diffconfig buildversion feedsversion -j $(($(nproc)+1))
